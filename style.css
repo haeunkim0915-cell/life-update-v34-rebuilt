@@ -53,3 +53,13 @@ body:has(#intro.is-active) #decision,
 body:has(#loading.is-active) #decision {
   display: none !important;
 }
+/* MEMORY ARCHIVE ADD-ON */
+.memory-archive{display:none;min-height:100svh;background:#1d1921;color:#f5f2f5;padding:clamp(24px,5vw,64px) 20px;font-family:inherit}
+body:has(#hero.is-active) .memory-archive{display:grid;place-items:center}
+.memory-window{width:min(100%,880px);border:3px solid #f38eb5;box-shadow:6px 6px 0 #a6577e;padding:5px}
+.memory-window-top{background:#f38eb5;color:#1d1921;display:flex;justify-content:space-between;gap:12px;padding:14px;font-family:'Press Start 2P',monospace;font-size:9px;line-height:1.8}
+.memory-body{padding:clamp(20px,5vw,46px)}.memory-kicker{color:#f38eb5;font-size:14px;margin:0 0 18px}.memory-body h2{font-size:clamp(32px,7vw,66px);line-height:1.1;letter-spacing:-.06em;margin:0 0 28px;font-weight:900}.memory-body h2 span{color:#f38eb5}
+.memory-viewer{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:stretch;gap:8px}.memory-arrow{border:2px solid #f38eb5;background:#2d2430;color:#f38eb5;font-family:'Press Start 2P',monospace;cursor:pointer}.memory-arrow:hover,.memory-arrow:focus-visible{background:#f38eb5;color:#1d1921}
+.memory-photo{min-width:0;aspect-ratio:4/3;border:2px solid #66516a;background:#2d2430;display:grid;place-items:center;overflow:hidden}.memory-photo img{width:100%;height:100%;object-fit:contain;display:block}.memory-placeholder{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}.memory-placeholder span{font-size:45px;color:#f38eb5}.memory-placeholder strong{font-family:'Press Start 2P',monospace;font-size:clamp(12px,2vw,18px)}.memory-placeholder small{font-size:13px;color:#c5b7c6}
+.memory-controls,.memory-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'Press Start 2P',monospace;font-size:9px;line-height:2;color:#c5b7c6}.memory-controls{padding:20px 0 28px}.memory-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px}.memory-dot{width:9px;height:9px;background:#6b546b;border:0;padding:0;cursor:pointer}.memory-dot.is-current{background:#f38eb5}.memory-footer{border-top:1px solid #66516a;padding-top:18px}.memory-footer a{color:#f38eb5}
+@media(max-width:600px){.memory-window-top{font-size:7px;padding:10px}.memory-body{padding:18px 12px}.memory-viewer{grid-template-columns:30px minmax(0,1fr) 30px;gap:4px}.memory-controls,.memory-footer{font-size:7px}.memory-photo{aspect-ratio:3/4}.memory-arrow{font-size:9px}}

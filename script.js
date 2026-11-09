@@ -43,3 +43,58 @@ startButton.addEventListener("click", () => {
     }
   }, 180);
 });
+// MEMORY ARCHIVE ADD-ON — paste at the END of script.js
+(() => {
+  const total = 8;
+  // To add photos later, put photo-01.jpg ... photo-08.jpg inside assets,
+  // then change the corresponding null to "assets/photo-01.jpg" etc.
+  const photos = [null, null, null, null, null, null, null, null];
+  const viewer = document.getElementById('memoryViewer');
+  const photo = document.getElementById('memoryPhoto');
+  const count = document.getElementById('memoryCount');
+  const dots = document.getElementById('memoryDots');
+  let index = 0;
+  const pad = n => String(n).padStart(2, '0');
+  function render() {
+    photo.replaceChildren();
+    if (photos[index]) {
+      const img = document.createElement('img');
+      img.src = photos[index];
+      img.alt = `우리의 사진 ${index + 1}`;
+      img.onerror = () => { photos[index] = null; render(); };
+      photo.append(img);
+    } else {
+      const p = document.createElement('div');
+      p.className = 'memory-placeholder';
+      const icon = document.createElement('span'); icon.textContent = '✳';
+      const title = document.createElement('strong'); title.textContent = `PHOTO ${pad(index + 1)}`;
+      const sub = document.createElement('small'); sub.textContent = '사진을 넣을 예정이에요';
+      p.append(icon, title, sub);
+      photo.append(p);
+    }
+    count.textContent = `${pad(index + 1)} / ${pad(total)}`;
+    [...dots.children].forEach((d, i) => {
+      d.classList.toggle('is-current', i === index);
+      d.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
+  }
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'memory-dot';
+    d.setAttribute('aria-label', `${i + 1}번째 사진`);
+    d.addEventListener('click', () => { index = i; render(); });
+    dots.append(d);
+  }
+  function move(step) { index = (index + step + total) % total; render(); }
+  document.getElementById('memoryPrev').addEventListener('click', () => move(-1));
+  document.getElementById('memoryNext').addEventListener('click', () => move(1));
+  let startX = null;
+  viewer.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, {passive:true});
+  viewer.addEventListener('touchend', e => {
+    if (startX === null) return;
+    const diff = e.changedTouches[0].screenX - startX;
+    if (Math.abs(diff) > 40) move(diff < 0 ? 1 : -1);
+    startX = null;
+  }, {passive:true});
+  render();
+})();
