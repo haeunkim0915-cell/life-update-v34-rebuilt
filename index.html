@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f6fa" />
+  <title>Life Update // Married</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Scene 01 -->
+  <section class="scene intro is-active" id="intro">
+    <button class="intro-button" id="startButton" type="button" aria-label="Life Update 시작하기">
+      <div class="wordmark">LIFE UPDATE</div>
+      <div class="version">Version 34.0</div>
+
+      <div class="ready">
+        <span class="ready-dot"></span>
+        <span>Ready</span>
+      </div>
+    </button>
+  </section>
+
+  <!-- Scene 02 -->
+  <section class="scene loading" id="loading" aria-live="polite">
+    <div class="loading-inner">
+      <p class="mono-label" id="loadingLabel">Initializing...</p>
+
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <p class="progress-value" id="progressValue">0%</p>
+      <p class="complete-message" id="completeMessage">Update Complete.</p>
+    </div>
+  </section>
+
+  <!-- Scene 03 -->
+  <main class="hero" id="hero">
+    <div class="hero-background-text" aria-hidden="true">LIFE UPDATE</div>
+
+    <div class="hero-content">
+      <p class="hero-kicker">Personal Release · 34.0</p>
+
+      <h1>
+        <span>WE GOT</span>
+        <span>MARRIED</span>
+      </h1>
+
+      <p class="hero-copy">
+        Not a wedding invitation.<br />
+        A life update.
+      </p>
+    </div>
+
+    <span class="scroll-cue" aria-hidden="true"></span>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
