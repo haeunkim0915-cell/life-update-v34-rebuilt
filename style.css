@@ -24,3 +24,32 @@
 @keyframes badge-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes title-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@keyframes pixel-glow{50%{opacity:.45}}
 @media(max-width:600px){.pixel-window{border-width:3px;box-shadow:0 0 0 3px #1d1921,0 0 0 5px #ad6587,5px 5px 0 #100e13}.pixel-window-top{border-bottom-width:3px;padding:12px}.pixel-window-content{padding:36px 15px 12px}.pixel-sparkles{letter-spacing:15px;font-size:16px}.pixel-hero-title{font-size:clamp(22px,6vw,38px);line-height:1.6;text-shadow:2px 2px 0 #453344}.pixel-hero-title span{text-shadow:2px 2px 0 #6b3a58}.pixel-story-button{padding:15px 12px;box-shadow:4px 4px 0 #a85d80}.pixel-hero-bottom{margin-top:36px}.hero-cats{height:55px}.hero-cats img{width:67px}}
 @media(prefers-reduced-motion:reduce){.hero-badge,.pixel-sparkles,.pixel-hero-title{animation:none}}
+
+/* Chapter 01 — Pixel Korean status window */
+@font-face{font-family:"Galmuri11";src:url("https://cdn.jsdelivr.net/npm/galmuri@2.40.0/dist/Galmuri11.woff2") format("woff2");font-display:swap}
+.status-screen{background:#1d1921;color:#f5f2f5;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:45px 22px}
+.status-window{width:min(100%,850px);border:4px solid #f38eb5;background:#211b26;box-shadow:0 0 0 5px #1d1921,0 0 0 7px #a96589,9px 9px 0 #110e15}
+.status-window-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:17px 20px;background:#f38eb5;color:#1d1921;font:9px/1.8 var(--pixel)}
+.status-window-body{padding:clamp(22px,5vw,58px)}
+.status-kicker{font:clamp(12px,2vw,16px)/1.8 "Galmuri11",monospace;color:#f38eb5;margin:0 0 15px}
+.status-title{font:700 clamp(24px,5vw,48px)/1.45 "Galmuri11",monospace;letter-spacing:-.03em;margin:0 0 34px;word-break:keep-all}
+.status-table{border:2px solid #80617d}
+.status-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font:clamp(13px,2.3vw,20px)/1.5 "Galmuri11",monospace}
+.status-row+.status-row{border-top:2px solid #59445a}
+.status-row>span{color:#d0c4d0}.status-row strong{font-weight:700;color:#f38eb5;text-align:right;word-break:keep-all}
+.status-row:nth-child(2) strong{color:#f5f2f5}
+.status-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:32px;color:#b6a7b7;font:9px/2 var(--pixel)}
+.status-footer a{color:#f38eb5}.status-footer a:hover{text-decoration:underline}
+@media(max-width:600px){.status-screen{padding:30px 16px}.status-window{border-width:3px;box-shadow:0 0 0 3px #1d1921,0 0 0 5px #a96589,5px 5px 0 #110e15}.status-window-top{padding:12px;font-size:7px}.status-window-body{padding:30px 16px}.status-title{margin-bottom:25px}.status-row{padding:17px 12px;gap:10px}.status-footer{font-size:7px}}
+
+/* START 화면에서는 다른 화면 숨기기 */
+#loading:not(.is-active),
+#hero:not(.is-active) {
+  display: none !important;
+}
+
+/* START 화면이 끝나기 전 STATUS UPDATE 숨기기 */
+body:has(#intro.is-active) #decision,
+body:has(#loading.is-active) #decision {
+  display: none !important;
+}
