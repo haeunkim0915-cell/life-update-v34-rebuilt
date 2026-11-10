@@ -892,3 +892,12 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
   .status-window-body .proposal-stage { flex: 0 0 auto; min-height: 115px; }
   .status-window-body .proposal-frame { max-height: 150px; }
 }
+
+/* CHAPTER 01 — smaller transparent character animation, no label */
+.proposal-stage {gap:0; padding:0; overflow:visible;}
+.proposal-stage-caption {display:none!important;}
+.proposal-frame {width:min(100%,260px); max-height:160px; object-fit:contain;}
+@media(max-width:600px) {
+ .status-window-body .proposal-stage {padding:0;gap:0;}
+ .status-window-body .proposal-frame {width:min(68%,230px);max-height:min(19svh,135px);}
+}
