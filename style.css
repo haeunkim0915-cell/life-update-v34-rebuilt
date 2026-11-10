@@ -979,3 +979,8 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
 @media (max-width:600px) {
   body.chapter-mode:not([data-chapter="hero"]) #hero { display:none !important; }
 }
+
+/* V17: ensure only the selected chapter is visible after clicking story mode. */
+body.chapter-mode:not([data-chapter="hero"]) #hero { display:none !important; }
+body.chapter-mode[data-chapter="hero"] #hero { display:flex !important; }
+body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; }

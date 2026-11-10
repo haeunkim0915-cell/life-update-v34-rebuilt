@@ -112,9 +112,17 @@ startButton.addEventListener("click", () => {
 
     document.body.classList.add("chapter-mode");
     document.body.dataset.chapter = id;
+    // Keep the hero's active state in sync with chapter navigation.
+    hero.classList.toggle("is-active", id === "hero");
 
     window.scrollTo({ top: 0, behavior: "instant" });
   }
+
+  const storyButton = document.querySelector('.pixel-story-button');
+  if (storyButton) storyButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    showChapter('decision');
+  });
 
   document.addEventListener("click", (event) => {
     const link = event.target.closest('a[href^="#"]');
