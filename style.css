@@ -984,3 +984,48 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
 body.chapter-mode:not([data-chapter="hero"]) #hero { display:none !important; }
 body.chapter-mode[data-chapter="hero"] #hero { display:flex !important; }
 body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; }
+
+
+/* V19 — consistent mobile card proportions across browser UI heights.
+   Preserve all colors, fonts, sprites, navigation and chapter content. */
+@media (max-width: 600px) and (min-height: 691px) {
+  body.chapter-mode[data-chapter="hero"] #hero,
+  body.chapter-mode[data-chapter="decision"] #decision,
+  body.chapter-mode[data-chapter="memory"] #memory,
+  body.chapter-mode[data-chapter="release"] #release,
+  body.chapter-mode[data-chapter="complete"] #complete {
+    min-height: 100svh;
+    height: 100svh;
+    padding: 12px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-window,
+  body.chapter-mode[data-chapter="decision"] #decision .status-window,
+  body.chapter-mode[data-chapter="memory"] #memory .memory-window,
+  body.chapter-mode[data-chapter="release"] #release .release-window,
+  body.chapter-mode[data-chapter="complete"] #complete .complete-window {
+    height: min(600px, calc(100svh - 24px), calc((100vw - 24px) * 1.68));
+    min-height: 0;
+    max-height: calc(100svh - 24px);
+    flex: none;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-window-content {
+    justify-content: center;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-hero-bottom {
+    margin-top: 16px;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .hero-cats {
+    margin-top: 8px;
+  }
+  body.chapter-mode[data-chapter="decision"] #decision .status-window-body,
+  body.chapter-mode[data-chapter="memory"] #memory .memory-body,
+  body.chapter-mode[data-chapter="release"] #release .release-body,
+  body.chapter-mode[data-chapter="complete"] #complete .complete-body {
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
