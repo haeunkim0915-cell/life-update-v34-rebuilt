@@ -162,3 +162,41 @@ startButton.addEventListener("click", () => {
     if (body) body.append(nav);
   });
 })();
+
+
+/* CHAPTER 01 — proposal animation, runs only while chapter is visible */
+(() => {
+  const image = document.getElementById('proposalFrame');
+  const caption = document.getElementById('proposalCaption');
+  if (!image) return;
+  const scenes = [
+    { src: 'assets/proposal-1.png', caption: '01 / IDLE' },
+    { src: 'assets/proposal-2.png', caption: '02 / PROPOSAL' },
+    { src: 'assets/proposal-3.png', caption: '03 / REACTION' },
+    { src: 'assets/proposal-4.png', caption: '04 / HAPPY END ♥' }
+  ];
+  scenes.forEach(scene => { const preload = new Image(); preload.src = scene.src; });
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let timer = null;
+  let current = 0;
+  function show(index) {
+    current = index;
+    image.src = scenes[index].src;
+    caption.textContent = scenes[index].caption;
+  }
+  function sync() {
+    const visible = document.body.classList.contains('chapter-mode') &&
+      document.body.dataset.chapter === 'decision';
+    if (!visible || reducedMotion.matches) {
+      if (timer !== null) { clearInterval(timer); timer = null; }
+      if (visible && reducedMotion.matches) show(3);
+      return;
+    }
+    if (timer !== null) return;
+    show(0);
+    timer = setInterval(() => show((current + 1) % scenes.length), 2200);
+  }
+  new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class', 'data-chapter'] });
+  reducedMotion.addEventListener?.('change', sync);
+  sync();
+})();

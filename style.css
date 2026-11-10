@@ -865,3 +865,30 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
     margin-bottom: 13px;
   }
 }
+
+
+/* CHAPTER 01 — proposal scene in the reserved empty space */
+.proposal-stage {
+  flex: 1 1 auto; min-height: 0; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; padding: 10px 0 0; overflow: hidden;
+}
+.proposal-frame {
+  display: block; width: min(100%, 380px); max-height: 100%;
+  height: auto; object-fit: contain; image-rendering: pixelated;
+}
+.proposal-stage-caption {
+  flex-shrink: 0; color: #f38eb5; font: 8px/1.7 var(--pixel);
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .status-window-body .proposal-stage { padding-top: 8px; gap: 5px; }
+  .status-window-body .proposal-frame { width: min(100%, 320px); max-height: min(26svh, 185px); }
+  .proposal-stage-caption { font-size: 7px; }
+  .status-window-body > .status-kicker { margin-top: clamp(8px, 2svh, 18px); }
+  .status-window-body .status-footer { margin-top: 10px; }
+}
+@media (max-width: 600px) and (max-height: 690px) {
+  .status-window-body .proposal-stage { flex: 0 0 auto; min-height: 115px; }
+  .status-window-body .proposal-frame { max-height: 150px; }
+}
