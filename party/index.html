@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1d1921">
+  <title>LIFE UPDATE v34.0 — WE GOT MARRIED</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=party1">
+  <script src="script.js?v=party1" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <section class="scene intro is-active" id="intro" aria-label="시작 화면">
+    <div class="frame">
+      <header class="topline"><span>♥ LIFE UPDATE.EXE</span><span>VER 34.0</span></header>
+      <div class="intro-center">
+        <div class="pixel-star" aria-hidden="true">✳</div>
+        <p class="eyebrow">A LITTLE UPDATE ABOUT US</p>
+        <h1 class="intro-title">LIFE<br><em>UPDATE</em><span class="cursor">_</span></h1>
+        <div class="intro-info"><span>01 / 02 PLAYERS</span><span>STATUS: READY <i class="status-dot"></i></span></div>
+        <button id="startButton" class="game-button"><span>▶ PRESS START</span><span>↗</span></button>
+        <p class="micro">BEST EXPERIENCED WITH A LITTLE CURIOSITY</p>
+      </div>
+      <footer class="bottomline"><span>© OUR LITTLE UNIVERSE</span><span>INSERT ♥ TO CONTINUE</span></footer>
+    </div>
+  </section>
+  <section class="scene loading" id="loading" aria-label="로딩 화면" aria-live="polite">
+    <div class="loading-inner">
+      <span class="pixel-tag">SYSTEM MESSAGE / 002</span>
+      <div class="loading-heart" aria-hidden="true">♥</div>
+      <h2>LOADING<br>NEW CHAPTER<span class="pink">_</span></h2>
+      <div class="cat-runway" aria-label="애옹이와 애기가 달리고 뿌기가 뒤따라 걷는 픽셀 애니메이션">
+        <div class="cat-runner cat-aeyong" id="catAeyong"><span class="cat-name">애옹</span><img id="aeyongSprite" src="assets/aeyong-0.png" alt="달리는 애옹"></div>
+        <div class="cat-runner cat-aegi" id="catAegi"><span class="cat-name">애기</span><img id="aegiSprite" src="assets/aegi-0.png" alt="달리는 애기"></div>
+        <div class="cat-runner turtle-bbugi" id="turtleBbugi"><span class="cat-name">뿌기</span><img id="bbugiSprite" src="assets/bbugi-0.png" alt="천천히 걷는 뿌기"></div>
+        <span class="finish-flag" aria-hidden="true">♥</span>
+      </div>
+      <div class="loading-track"><div class="loading-fill" id="loadingFill"></div></div>
+      <div class="loading-meta"><span id="loadingText">INITIALIZING...</span><span id="loadingPercent">0%</span></div><p class="loading-tip">TIP! 신규 파티원 3마리 합류! (전투력 미상, 귀여움 MAX)</p>
+    </div>
+  </section>
+  <main class="hero" id="hero">
+    <div class="pixel-window">
+      <div class="pixel-window-top"><span>♥ LIFE UPDATE.EXE</span><span class="window-actions" aria-hidden="true">− □ ×</span></div>
+      <div class="pixel-window-content">
+        <div class="hero-badge">✳ ACHIEVEMENT UNLOCKED ✳</div>
+        <div class="pixel-sparkles" aria-hidden="true">✦ <span>✧</span> ✦</div>
+        <h1 class="pixel-hero-title">WE GOT<br><span>MARRIED!</span></h1>
+        <p class="hero-players">JOSEPH <span>×</span> HAEUN</p>
+        <p class="pixel-hero-sub">Not a wedding invitation.<br>A life update.</p>
+        <a class="pixel-story-button" href="#decision">▶ ENTER STORY MODE <span aria-hidden="true">→</span></a>
+        <div class="pixel-hero-bottom"><span>PLAYER 01 + PLAYER 02</span><span>SAVE COMPLETE ✓</span></div>
+        <div class="hero-cats" aria-label="애옹이와 애기 픽셀 캐릭터">
+          <img src="assets/aeyong-0.png" alt="애옹"/><span>♥</span><img src="assets/aegi-0.png" alt="애기"/>
+        </div>
+      </div>
+    </div>
+  </main>
+  <section class="decision-section status-screen" id="decision">
+    <div class="status-window">
+      <div class="status-window-top"><span>♥ LIFE UPDATE.EXE</span><span>CHAPTER 01 / STATUS UPDATE</span></div>
+      <div class="status-window-body">
+        <p class="status-kicker">★ 새로운 소식</p>
+        <h2 class="status-title">저희 결혼했어요!</h2>
+        <div class="status-table" aria-label="결혼 소식 요약">
+          <div class="status-row"><span>관계 상태</span><strong>연애 모드 종료✓</strong></div>
+          <div class="status-row"><span>진행 방식</span><strong>결혼식 퀘스트 스킵✓</strong></div>
+          <div class="status-row"><span>업데이트 결과</span><strong>2인 파티 결성 완료✓</strong></div>
+        </div>
+        <div class="status-footer"><span>JOSEPH × HAEUN</span><a href="#hero">↑ BACK TO TITLE</a></div>
+        <div class="proposal-stage" aria-label="요셉과 하은의 프러포즈 픽셀 애니메이션">
+          <img id="proposalFrame" class="proposal-frame" src="assets/proposal-uniform-1.png" alt="요셉과 하은, 애옹과 애기가 함께하는 프러포즈 이야기" width="330" height="180">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CHAPTER 02 — MEMORY ARCHIVE -->
+  <section class="memory-archive" id="memory" aria-label="사진 갤러리">
+  <div class="memory-window">
+    <div class="memory-window-top"><span>♥ LIFE UPDATE.EXE</span><span>CHAPTER 02 / MEMORY ARCHIVE</span></div>
+    <div class="memory-body">
+      <p class="memory-kicker">★ JOSEPH ♡ HAEUN</p>
+      <h2>PHOTO <span>MODE</span></h2>
+      <div class="memory-viewer" id="memoryViewer">
+        <button class="memory-arrow" id="memoryPrev" aria-label="이전 사진">◀</button>
+        <div class="memory-photo" id="memoryPhoto" role="img" aria-label="사진 준비 중">
+          <div class="memory-placeholder"><span>✳</span><strong>PHOTO 01</strong><small>사진을 넣을 예정이에요</small></div>
+        </div>
+        <button class="memory-arrow" id="memoryNext" aria-label="다음 사진">▶</button>
+      </div>
+      <div class="memory-controls"><span id="memoryCount">01 / 08</span><div class="memory-dots" id="memoryDots" aria-label="사진 페이지"></div><span>← SWIPE →</span></div>
+      <div class="memory-footer"><span>JOSEPH × HAEUN</span><a href="#decision">↑ PREVIOUS CHAPTER</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 03 — RELEASE NOTES -->
+<section class="release-section" id="release">
+  <div class="release-window">
+    <div class="release-top">
+      <span>♥ LIFE UPDATE.EXE</span>
+      <span>CHAPTER 03 / RELEASE NOTES</span>
+    </div>
+
+    <div class="release-body">
+      <p class="release-kicker">★ 새로운 업데이트</p>
+      <h2>RELEASE <span>NOTES</span></h2>
+      <p class="release-version">VERSION 34.0 — WHAT'S NEW?</p>
+
+      <div class="release-list">
+        <div class="release-item">
+          <span class="release-tag">NEW</span>
+          <div>
+            <h3>부부 모드 활성화</h3>
+            <p>싱글 플레이 종료, 협동 플레이 시작</p>
+          </div>
+        </div>
+
+        <div class="release-item">
+          <span class="release-tag">UPDATE</span>
+          <div>
+            <h3>가족 구성 업데이트</h3>
+            <p>요셉 · 하은 · 애옹 · 애기 · 뿌기</p>
+          </div>
+        </div>
+
+        <div class="release-item">
+          <span class="release-tag">PATCH</span>
+          <div>
+            <h3>일상 공유 기능 추가</h3>
+            <p>요셉의 닭소리 알람 강제 동기화, 하은 식비 공동 부담 기능 추가 </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="release-complete">
+        ♥ UPDATE SUCCESSFULLY INSTALLED ♥
+      </p>
+
+      <div class="release-footer">
+        <span>JOSEPH × HAEUN</span>
+        <a href="#memory">↑ PREVIOUS CHAPTER</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 04 — UPDATE COMPLETE -->
+<section class="complete-section" id="complete" aria-label="업데이트 완료">
+  <div class="complete-window">
+    <div class="complete-top"><span>♥ LIFE UPDATE.EXE</span><span>CHAPTER 04 / COMPLETE</span></div>
+    <div class="complete-body">
+      <p class="complete-kicker">★ ACHIEVEMENT UNLOCKED</p>
+      <div class="complete-center">
+        <div class="pixel-ending-heart" aria-label="하트"></div>
+        <h2>UPDATE<br><span>COMPLETE!</span></h2>
+        <p class="complete-message">우리의 새로운 챕터가 시작되었습니다.</p>
+        <p class="complete-caption">THANK YOU FOR BEING PART OF OUR STORY.</p>
+      </div>
+      <div class="complete-bottom"><span>JOSEPH × HAEUN</span><span>VERSION 34.0 ✓</span></div>
+      <div class="chapter-navigation complete-navigation">
+        <a href="#release">◀ PREVIOUS</a>
+        <a href="#party">NEXT CHAPTER ▶</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="complete-section" id="party" aria-label="결혼파티 안내">
+  <div class="complete-window">
+    <div class="complete-top"><span>♥ LIFE UPDATE.EXE</span><span>BONUS STAGE / PARTY</span></div>
+    <div class="complete-body">
+      <p class="complete-kicker">★ BONUS STAGE UNLOCKED</p>
+      <div class="complete-center">
+        <div class="pixel-ending-heart" aria-hidden="true"></div>
+        <h2>WEDDING<br><span>PARTY!</span></h2>
+        <p class="complete-message">우리의 결혼파티에 초대합니다!</p>
+        <p class="complete-caption">DATE &amp; LOCATION DETAILS COMING SOON</p>
+      </div>
+      <div class="complete-bottom"><span>JOSEPH × HAEUN</span><span>PARTY MODE ✓</span></div>
+      <div class="chapter-navigation complete-navigation">
+        <a href="#complete">◀ PREVIOUS</a>
+        <a href="#hero">↩ BACK TO TITLE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
