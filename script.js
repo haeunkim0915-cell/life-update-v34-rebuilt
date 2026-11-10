@@ -170,10 +170,10 @@ startButton.addEventListener("click", () => {
   const caption = document.getElementById('proposalCaption');
   if (!image) return;
   const scenes = [
-    ['assets/proposal-clean-1.png', '01 / IDLE'],
-    ['assets/proposal-clean-2.png', '02 / PROPOSAL'],
-    ['assets/proposal-clean-3.png', '03 / REACTION'],
-    ['assets/proposal-clean-4.png', '04 / HAPPY END ♥']
+    ['assets/proposal-uniform-1.png', '01 / IDLE'],
+    ['assets/proposal-uniform-2.png', '02 / PROPOSAL'],
+    ['assets/proposal-uniform-3.png', '03 / REACTION'],
+    ['assets/proposal-uniform-4.png', '04 / HAPPY END ♥']
   ];
   scenes.forEach(([src]) => { const img = new Image(); img.src = src; });
   let current = 0;
