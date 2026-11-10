@@ -909,3 +909,68 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
  .status-window-body .proposal-frame { width: min(55%, 190px) !important; max-height: min(15svh, 105px) !important; }
  .status-window-body .proposal-stage { min-height: 0 !important; }
 }
+
+
+/* V15 CROSS-DEVICE MOBILE HERO: same card geometry across iOS/Android.
+   Overrides older viewport-height breakpoint rules only for MAIN. */
+@media (max-width:600px) {
+  html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  html, body { width:100%; max-width:100%; overflow-x:hidden; }
+  button, a { touch-action:manipulation; }
+  #hero.hero.is-active,
+  body.chapter-mode[data-chapter="hero"] #hero {
+    display:flex !important;
+    box-sizing:border-box;
+    width:100%;
+    height:100svh;
+    min-height:100svh;
+    padding:12px;
+    align-items:center;
+    justify-content:center;
+    overflow-y:auto;
+  }
+  #hero .pixel-window {
+    box-sizing:border-box;
+    flex:0 1 auto;
+    width:100%;
+    height:min(650px, calc(100svh - 24px));
+    min-height:0;
+    max-height:calc(100svh - 24px);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  #hero .pixel-window-top { flex:0 0 auto; }
+  #hero .pixel-window-content {
+    flex:1 1 auto;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:clamp(14px,3svh,23px) 15px 10px;
+  }
+  #hero .hero-badge { margin-top:clamp(8px,2svh,18px); }
+  #hero .pixel-sparkles { margin-top:clamp(8px,1.5svh,14px); }
+  #hero .pixel-hero-title { margin:clamp(8px,1.6svh,14px) 0 10px; }
+  #hero .pixel-hero-sub { margin:clamp(10px,2svh,18px) 0 0; }
+  #hero .pixel-story-button { margin-top:clamp(14px,2.8svh,25px); margin-bottom:0; flex-shrink:0; }
+  #hero .pixel-hero-bottom { margin-top:auto; padding-top:10px; flex-shrink:0; }
+  #hero .hero-cats {
+    margin:10px auto 3px;
+    flex:0 0 50px;
+    height:50px;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  #hero .hero-cats img { width:60px; max-height:50px; object-fit:contain; }
+}
+@media (max-width:600px) and (max-height:620px) {
+  #hero .pixel-window-content { padding-top:8px; }
+  #hero .hero-badge { margin-top:0; }
+  #hero .pixel-sparkles { margin-top:3px; }
+  #hero .pixel-hero-title { margin:5px 0 6px; font-size:clamp(20px,5.5vw,32px); }
+  #hero .pixel-hero-sub { margin-top:7px; font-size:13px; }
+  #hero .pixel-story-button { margin-top:10px; padding:10px 12px; }
+  #hero .hero-cats { flex-basis:38px; height:38px; margin-top:5px; }
+  #hero .hero-cats img { width:47px; max-height:38px; }
+}
