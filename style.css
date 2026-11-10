@@ -738,3 +738,46 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
     padding:12px;
   }
 }
+
+/* MOBILE POLISH — prevent clipped window titles and balance chapter content. */
+@media (max-width: 600px) {
+  /* The right-hand chapter label may wrap, but never run beyond the window. */
+  .status-window-top, .memory-window-top, .release-top, .complete-top {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-content: center;
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 3px;
+    padding: 9px 10px;
+    font-size: clamp(5px, 1.55vw, 7px);
+    line-height: 1.65;
+    min-height: 48px;
+    height: auto;
+    flex-basis: auto;
+  }
+  .status-window-top > :first-child,
+  .memory-window-top > :first-child,
+  .release-top > :first-child,
+  .complete-top > :first-child { white-space: nowrap; }
+  .status-window-top > :last-child,
+  .memory-window-top > :last-child,
+  .release-top > :last-child,
+  .complete-top > :last-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    text-align: right;
+  }
+  /* Use the middle of the available space without dislodging bottom navigation. */
+  .status-window-body, .release-body { position: relative; }
+  .status-window-body > .status-kicker { margin-top: clamp(20px, 6svh, 56px); }
+  .release-body > .release-kicker { margin-top: clamp(10px, 3svh, 26px); }
+  .status-window-body .chapter-navigation,
+  .release-body .chapter-navigation { margin-top: auto; }
+  .release-item p { overflow-wrap: anywhere; word-break: keep-all; }
+}
+@media (max-width: 600px) and (max-height: 690px) {
+  .status-window-body > .status-kicker,
+  .release-body > .release-kicker { margin-top: 0; }
+}
