@@ -41,6 +41,9 @@ startButton.addEventListener("click", () => {
       clearInterval(timer);
       setTimeout(() => {
         loading.classList.remove("is-active");
+        // Use the exact same hero state as BACK TO TITLE navigation.
+        document.body.classList.add("chapter-mode");
+        document.body.dataset.chapter = "hero";
         hero.classList.add("is-active");
         window.scrollTo(0, 0);
       }, 450);
