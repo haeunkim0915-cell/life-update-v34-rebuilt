@@ -63,3 +63,440 @@ body:has(#hero.is-active) .memory-archive{display:grid;place-items:center}
 .memory-photo{min-width:0;aspect-ratio:4/3;border:2px solid #66516a;background:#2d2430;display:grid;place-items:center;overflow:hidden}.memory-photo img{width:100%;height:100%;object-fit:contain;display:block}.memory-placeholder{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}.memory-placeholder span{font-size:45px;color:#f38eb5}.memory-placeholder strong{font-family:'Press Start 2P',monospace;font-size:clamp(12px,2vw,18px)}.memory-placeholder small{font-size:13px;color:#c5b7c6}
 .memory-controls,.memory-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:'Press Start 2P',monospace;font-size:9px;line-height:2;color:#c5b7c6}.memory-controls{padding:20px 0 28px}.memory-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px}.memory-dot{width:9px;height:9px;background:#6b546b;border:0;padding:0;cursor:pointer}.memory-dot.is-current{background:#f38eb5}.memory-footer{border-top:1px solid #66516a;padding-top:18px}.memory-footer a{color:#f38eb5}
 @media(max-width:600px){.memory-window-top{font-size:7px;padding:10px}.memory-body{padding:18px 12px}.memory-viewer{grid-template-columns:30px minmax(0,1fr) 30px;gap:4px}.memory-controls,.memory-footer{font-size:7px}.memory-photo{aspect-ratio:3/4}.memory-arrow{font-size:9px}}
+
+/* 뿌기: 고양이보다 작은 픽셀 거북이가 뒤에서 느리게 걷습니다. */
+.cat-runner.turtle-bbugi{width:64px;height:77px;bottom:3px;z-index:3;pointer-events:none}
+.turtle-bbugi img{width:64px;height:auto;image-rendering:pixelated;animation:turtle-walk .72s steps(2,end) infinite}
+.turtle-bbugi .cat-name{font-size:9px;padding:3px 5px;box-shadow:2px 2px 0 #9e577d}
+@keyframes turtle-walk{50%{transform:translateY(-2px)}}
+@media(max-width:700px){.cat-runner.turtle-bbugi{width:48px;height:62px}.turtle-bbugi img{width:48px}.turtle-bbugi .cat-name{font-size:8px;padding:2px 4px}}
+@media(prefers-reduced-motion:reduce){.turtle-bbugi img{animation:none}}
+/* 뿌기만 천천히 걷기 */
+.cat-bbugi img {
+  animation: bbugi-walk 0.8s steps(2, end) infinite;
+}
+
+@keyframes bbugi-walk {
+  50% {
+    transform: translateY(-2px);
+  }
+}
+/* MEMORY ARCHIVE — 세로형 사진 앨범 */
+.memory-photo {
+  aspect-ratio: 3 / 4;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.memory-viewer {
+  grid-template-columns: 44px minmax(0, 480px) 44px;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .memory-viewer {
+    grid-template-columns: 30px minmax(0, 1fr) 30px;
+  }
+}
+/* 사진 전체가 잘리지 않도록 표시 */
+.memory-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* CHAPTER 03 — RELEASE NOTES */
+.release-section {
+  min-height: 100svh;
+  background: #1d1921;
+  color: #f5f2f5;
+  padding: 45px 20px;
+  display: none;
+  place-items: center;
+}
+
+body:has(#hero.is-active) .release-section {
+  display: grid;
+}
+
+.release-window {
+  width: min(100%, 880px);
+  border: 3px solid #f38eb5;
+  background: #211b26;
+  box-shadow: 6px 6px 0 #a6577e;
+}
+
+.release-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #f38eb5;
+  color: #1d1921;
+  padding: 15px;
+  font: 9px/1.8 var(--pixel);
+}
+
+.release-body {
+  padding: clamp(22px, 5vw, 48px);
+}
+
+.release-kicker {
+  color: #f38eb5;
+  font: 15px "Galmuri11", monospace;
+}
+
+.release-body h2 {
+  font-size: clamp(30px, 7vw, 64px);
+  letter-spacing: -.06em;
+  margin: 15px 0;
+}
+
+.release-body h2 span {
+  color: #f38eb5;
+}
+
+.release-version {
+  color: #bbaaba;
+  font: 9px/2 var(--pixel);
+  margin-bottom: 35px;
+}
+
+.release-list {
+  border: 2px solid #66516a;
+}
+
+.release-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 25px 20px;
+}
+
+.release-item + .release-item {
+  border-top: 2px solid #66516a;
+}
+
+.release-tag {
+  background: #f38eb5;
+  color: #1d1921;
+  padding: 8px;
+  font: 8px var(--pixel);
+  min-width: 70px;
+  text-align: center;
+}
+
+.release-item h3 {
+  font: 700 19px/1.5 "Galmuri11", monospace;
+  margin: 0 0 9px;
+}
+
+.release-item p {
+  color: #c5b7c6;
+  font: 12px/1.8 "Galmuri11", monospace;
+  margin: 0;
+}
+
+.release-complete {
+  color: #f38eb5;
+  font: 9px/2 var(--pixel);
+  text-align: center;
+  margin: 35px 0;
+}
+
+.release-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid #66516a;
+  padding-top: 20px;
+  color: #bbaaba;
+  font: 9px/2 var(--pixel);
+}
+
+.release-footer a {
+  color: #f38eb5;
+}
+
+@media (max-width: 600px) {
+  .release-top,
+  .release-footer {
+    font-size: 7px;
+  }
+
+  .release-item {
+    padding: 20px 12px;
+    gap: 10px;
+  }
+
+  .release-tag {
+    min-width: 58px;
+    font-size: 7px;
+  }
+
+  .release-item h3 {
+    font-size: 16px;
+  }
+
+  .release-item p {
+    font-size: 11px;
+  }
+
+  .release-complete,
+  .release-version {
+    font-size: 7px;
+  }
+}
+
+/* CHAPTER MODE — 한 화면씩 보여주기 */
+body.chapter-mode #decision,
+body.chapter-mode #memory,
+body.chapter-mode #release {
+  display: none !important;
+}
+
+body.chapter-mode[data-chapter="decision"] #decision,
+body.chapter-mode[data-chapter="memory"] #memory,
+body.chapter-mode[data-chapter="release"] #release {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+body.chapter-mode[data-chapter="memory"] #memory,
+body.chapter-mode[data-chapter="release"] #release {
+  display: grid !important;
+  place-items: center;
+}
+
+body.chapter-mode #hero {
+  display: none !important;
+}
+
+body.chapter-mode[data-chapter="hero"] #hero {
+  display: grid !important;
+}
+
+/* 챕터 이동 버튼 */
+.chapter-navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.chapter-navigation a {
+  flex: 1;
+  min-width: 130px;
+  padding: 16px 12px;
+  border: 2px solid #f38eb5;
+  color: #f38eb5;
+  text-align: center;
+  font: 9px/1.8 var(--pixel);
+  transition: background .15s, color .15s;
+}
+
+.chapter-navigation a:hover {
+  background: #f38eb5;
+  color: #1d1921;
+}
+
+@media (max-width: 600px) {
+  .chapter-navigation a {
+    font-size: 7px;
+    min-width: 110px;
+  }
+}
+
+
+/* CHAPTER LAYOUT — consolidated shared sizing */
+body.chapter-mode[data-chapter="decision"] #decision,
+body.chapter-mode[data-chapter="memory"] #memory,
+body.chapter-mode[data-chapter="release"] #release {
+  display: flex !important;
+  width: 100%;
+  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 18px;
+}
+.status-window, .memory-window, .release-window {
+  flex: 0 1 880px;
+  width: 100%;
+  max-width: 880px;
+  height: 790px;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 0;
+  border: 3px solid #f38eb5;
+  background: #211b26;
+  box-shadow: 6px 6px 0 #a6577e;
+  display: flex;
+  flex-direction: column;
+}
+.status-window-top, .memory-window-top, .release-top {
+  flex: 0 0 54px;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #f38eb5;
+  color: #1d1921;
+  font: 9px/1.8 var(--pixel);
+}
+.status-window-body, .memory-body, .release-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 44px;
+}
+.status-footer a, .memory-footer a, .release-footer a {display:none}
+.chapter-navigation {margin-top:auto; padding-top:20px; flex-shrink:0}
+.memory-body h2, .release-body h2 {font-size:clamp(30px,5vw,54px)}
+.memory-viewer {
+  grid-template-columns: 38px minmax(0, 300px) 38px;
+  justify-content:center;
+  gap:8px;
+}
+.memory-photo {
+  width:100%;
+  max-width:300px;
+  aspect-ratio:3/4;
+  margin:0 auto;
+}
+.memory-controls {padding:14px 0 18px}
+.memory-footer {margin-top:0}
+.release-item {padding:19px 18px}
+.release-version {margin-bottom:24px}
+.release-complete {margin:22px 0}
+.release-footer {margin-top:0}
+@media(max-width:600px) {
+  body.chapter-mode[data-chapter="decision"] #decision,
+  body.chapter-mode[data-chapter="memory"] #memory,
+  body.chapter-mode[data-chapter="release"] #release {padding:16px 12px;}
+  .status-window,.memory-window,.release-window {
+    height:auto;
+    min-height:min(740px,calc(100svh - 32px));
+    max-width:100%;
+    box-shadow:4px 4px 0 #a6577e;
+  }
+  .status-window-top,.memory-window-top,.release-top {
+    flex-basis:auto;
+    min-height:48px;
+    padding:12px;
+    font-size:7px;
+  }
+  .status-window-body,.memory-body,.release-body {padding:24px 16px;}
+  .memory-viewer {grid-template-columns:30px minmax(0,300px) 30px;gap:4px}
+  .memory-photo {max-width:300px}
+  .chapter-navigation {margin-top:auto;padding-top:24px}
+}
+
+/* CHAPTER 04 — same-sized ending window */
+.complete-section {
+  display:none;
+  min-height:100svh;
+  padding:16px 20px;
+  background:#1d1921;
+  color:#f5f2f5;
+  align-items:center;
+  justify-content:center;
+}
+.complete-window {
+  width:100%;max-width:880px;height:790px;min-height:0;
+  border:3px solid #f38eb5;background:#211b26;
+  box-shadow:6px 6px 0 #a6577e;
+  display:flex;flex-direction:column;
+}
+.complete-top {
+  flex:0 0 54px;min-height:54px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:12px 20px;background:#f38eb5;color:#1d1921;
+  font:9px/1.8 var(--pixel);
+}
+.complete-body {
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:36px 44px;
+}
+.complete-kicker {font:15px/1.8 "Galmuri11",monospace;color:#f38eb5;margin:0}
+.complete-center {flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.complete-heart {font:65px/1 var(--pixel);color:#f38eb5;animation:pulse 1.2s steps(2,end) infinite}
+.complete-center h2 {font:clamp(25px,4.5vw,48px)/1.6 var(--pixel);letter-spacing:-.04em;margin:0;overflow-wrap:anywhere}
+.complete-center h2 span {color:#f38eb5}
+.complete-message {font:clamp(15px,2vw,20px)/1.7 "Galmuri11",monospace;margin:0;word-break:keep-all}
+.complete-caption {font:9px/2 var(--pixel);color:#bbaaba;margin:0;word-break:keep-all}
+.complete-bottom {display:flex;justify-content:space-between;gap:12px;border-top:1px solid #66516a;padding-top:15px;font:9px/2 var(--pixel);color:#bbaaba}
+.complete-navigation {margin-top:auto;padding-top:20px}
+/* Hide every chapter until story mode begins, including after loading. */
+body:not(.chapter-mode) #decision,
+body:not(.chapter-mode) #memory,
+body:not(.chapter-mode) #release,
+body:not(.chapter-mode) #complete {display:none!important}
+body.chapter-mode #complete {display:none!important}
+body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
+@media(max-width:600px) {
+  .complete-section {padding:16px 12px}
+  .complete-window {height:auto;min-height:min(740px,calc(100svh - 32px));box-shadow:4px 4px 0 #a6577e}
+  .complete-top {flex-basis:auto;min-height:48px;padding:12px;font-size:7px}
+  .complete-body {padding:24px 16px}
+  .complete-kicker {font-size:12px}
+  .complete-center {padding:34px 0;gap:15px}
+  .complete-heart {font-size:48px}
+  .complete-center h2 {font-size:clamp(21px,6vw,32px)}
+  .complete-caption,.complete-bottom {font-size:7px}
+}
+
+/* CHAPTER 01~04 작은 소제목 스타일 통일 */
+.status-kicker,
+.memory-kicker,
+.release-kicker,
+.complete-kicker {
+  font-family: "Galmuri11", monospace;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+  color: #f38eb5;
+  margin: 0 0 18px;
+}
+
+/* CHAPTER 02, 03 대제목 픽셀 폰트 통일 */
+.memory-body h2,
+.release-body h2 {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(20px, 3.5vw, 34px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+
+/* CHAPTER 04 — 움직이는 픽셀 하트 */
+.pixel-ending-heart {
+  width: 16px;
+  height: 16px;
+  background: #f38eb5;
+  margin: 25px auto 12px;
+  transform: rotate(-45deg);
+  box-shadow:
+    16px 0 #f38eb5,
+    0 -16px #f38eb5;
+  animation: pixel-heart-bounce 1s ease-in-out infinite;
+}
+
+@keyframes pixel-heart-bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
