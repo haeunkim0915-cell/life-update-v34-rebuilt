@@ -1072,3 +1072,10 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
     margin-top: 0;
   }
 }
+
+/* V22 — CHAPTER 01: lower the proposal animation without resizing sprites. */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="decision"] #decision .proposal-frame {
+    transform: translateY(45px);
+  }
+}
