@@ -988,7 +988,7 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
 
 /* V19 — consistent mobile card proportions across browser UI heights.
    Preserve all colors, fonts, sprites, navigation and chapter content. */
-@media (max-width: 600px) and (min-height: 691px) {
+@media (max-width: 600px) {
   body.chapter-mode[data-chapter="hero"] #hero,
   body.chapter-mode[data-chapter="decision"] #decision,
   body.chapter-mode[data-chapter="memory"] #memory,
@@ -1027,5 +1027,19 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
   body.chapter-mode[data-chapter="complete"] #complete .complete-body {
     overflow-y: auto;
     scrollbar-width: thin;
+  }
+}
+
+/* V20 — apply the same balanced card layout at ALL mobile viewport heights,
+   including Samsung Internet with visible bottom toolbar. */
+@media (max-width:600px) {
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-window-content {
+    justify-content:center;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-hero-bottom {
+    margin-top:16px;
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .hero-cats {
+    margin-top:8px;
   }
 }
