@@ -135,6 +135,21 @@ startButton.addEventListener("click", () => {
     if (!chapters.includes(target)) return;
 
     event.preventDefault();
+    if (target === 'party' && document.body.dataset.chapter === 'complete') {
+      const overlay = document.getElementById('bonusTransition');
+      if (overlay && !overlay.classList.contains('is-showing')) {
+        overlay.classList.add('is-showing');
+        overlay.setAttribute('aria-hidden', 'false');
+        window.setTimeout(() => {
+          showChapter('party');
+          window.setTimeout(() => {
+            overlay.classList.remove('is-showing');
+            overlay.setAttribute('aria-hidden', 'true');
+          }, 350);
+        }, 1400);
+      }
+      return;
+    }
     showChapter(target);
   });
 
