@@ -164,39 +164,44 @@ startButton.addEventListener("click", () => {
 })();
 
 
-/* CHAPTER 01 — proposal animation, runs only while chapter is visible */
+/* CHAPTER 01 — reliable frame-by-frame proposal animation */
 (() => {
   const image = document.getElementById('proposalFrame');
   const caption = document.getElementById('proposalCaption');
   if (!image) return;
   const scenes = [
-    { src: 'assets/proposal-1.png', caption: '01 / IDLE' },
-    { src: 'assets/proposal-2.png', caption: '02 / PROPOSAL' },
-    { src: 'assets/proposal-3.png', caption: '03 / REACTION' },
-    { src: 'assets/proposal-4.png', caption: '04 / HAPPY END ♥' }
+    ['assets/proposal-1.png', '01 / IDLE'],
+    ['assets/proposal-2.png', '02 / PROPOSAL'],
+    ['assets/proposal-3.png', '03 / REACTION'],
+    ['assets/proposal-4.png', '04 / HAPPY END ♥']
   ];
-  scenes.forEach(scene => { const preload = new Image(); preload.src = scene.src; });
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let timer = null;
+  scenes.forEach(([src]) => { const img = new Image(); img.src = src; });
   let current = 0;
-  function show(index) {
-    current = index;
-    image.src = scenes[index].src;
-    caption.textContent = scenes[index].caption;
+  let timer = null;
+  const visible = () => document.body.classList.contains('chapter-mode') && document.body.dataset.chapter === 'decision';
+  function render() {
+    image.src = scenes[current][0];
+    if (caption) caption.textContent = scenes[current][1];
   }
   function sync() {
-    const visible = document.body.classList.contains('chapter-mode') &&
-      document.body.dataset.chapter === 'decision';
-    if (!visible || reducedMotion.matches) {
-      if (timer !== null) { clearInterval(timer); timer = null; }
-      if (visible && reducedMotion.matches) show(3);
+    if (!visible()) {
+      if (timer !== null) clearInterval(timer);
+      timer = null;
       return;
     }
     if (timer !== null) return;
-    show(0);
-    timer = setInterval(() => show((current + 1) % scenes.length), 2200);
+    current = 0;
+    render();
+    timer = window.setInterval(() => {
+      if (!visible()) { sync(); return; }
+      current = (current + 1) % scenes.length;
+      render();
+    }, 1700);
   }
   new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class', 'data-chapter'] });
-  reducedMotion.addEventListener?.('change', sync);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && timer !== null) { clearInterval(timer); timer = null; }
+    else sync();
+  });
   sync();
 })();
