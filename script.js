@@ -173,7 +173,7 @@ startButton.addEventListener("click", () => {
     ['assets/proposal-uniform-1.png', '01 / IDLE'],
     ['assets/proposal-uniform-2.png', '02 / PROPOSAL'],
     ['assets/proposal-uniform-3.png', '03 / REACTION'],
-    ['assets/proposal-final-small-v13.png', '04 / HAPPY END ♥']
+    ['assets/proposal-matched-4-v14.png', '04 / HAPPY END ♥']
   ];
   scenes.forEach(([src]) => { const img = new Image(); img.src = src; });
   let current = 0;
