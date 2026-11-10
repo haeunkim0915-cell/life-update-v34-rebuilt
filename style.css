@@ -1043,3 +1043,32 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
     margin-top:8px;
   }
 }
+
+/* V21 — consistent chapter heading alignment on mobile.
+   Scoped to chapter heading typography only; preserve all content and navigation. */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="decision"] #decision .status-window-body,
+  body.chapter-mode[data-chapter="memory"] #memory .memory-body,
+  body.chapter-mode[data-chapter="release"] #release .release-body,
+  body.chapter-mode[data-chapter="complete"] #complete .complete-body {
+    padding-top: 24px;
+  }
+  body.chapter-mode .status-window-body > .status-kicker,
+  body.chapter-mode .memory-body > .memory-kicker,
+  body.chapter-mode .release-body > .release-kicker,
+  body.chapter-mode .complete-body > .complete-kicker {
+    font-family: "Galmuri11", monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0;
+    margin: 0 0 14px;
+    padding: 0;
+    color: #f38eb5;
+  }
+  body.chapter-mode .status-window-body > .status-title,
+  body.chapter-mode .memory-body > h2,
+  body.chapter-mode .release-body > h2 {
+    margin-top: 0;
+  }
+}
