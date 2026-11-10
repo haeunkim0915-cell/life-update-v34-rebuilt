@@ -2171,3 +2171,36 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
 body.chapter-mode[data-chapter="party"] #party { display:flex!important; }
 body.chapter-mode[data-chapter="party"] #party { display:none!important; }
 
+
+
+/* v23 — Desktop-only alignment for intro and hero. Mobile/chapter styles untouched. */
+@media (min-width: 701px) {
+  #intro .intro-center {
+    width: min(100%, 660px);
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: flex-start;
+  }
+  #intro .intro-title { font-size: clamp(64px, 10vw, 154px); }
+  #intro .intro-info, #intro .game-button { width: 100%; max-width: 660px; }
+  #hero.hero.is-active,
+  body.chapter-mode[data-chapter="hero"] #hero {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    place-items: center !important;
+    justify-items: center !important;
+    align-content: center !important;
+    width: 100%;
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 40px);
+  }
+  #hero .pixel-window {
+    width: min(100%, 1120px);
+    max-width: 1120px;
+    min-width: 0;
+    margin: 0 auto;
+    justify-self: center;
+  }
+}
