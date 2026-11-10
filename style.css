@@ -500,3 +500,241 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
   }
 }
 
+
+/* ==========================================================
+   MOBILE GAME SCREEN — consistent viewport-sized windows
+   PC layout is unchanged. Append after all existing rules.
+   ========================================================== */
+@media (max-width: 600px) {
+  html, body { width: 100%; }
+  body.chapter-mode { overflow-x: hidden; }
+
+  /* All five windows occupy the same usable screen area. */
+  .hero.is-active,
+  body.chapter-mode[data-chapter="decision"] #decision,
+  body.chapter-mode[data-chapter="memory"] #memory,
+  body.chapter-mode[data-chapter="release"] #release,
+  body.chapter-mode[data-chapter="complete"] #complete {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 12px 12px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pixel-window,
+  .status-window, .memory-window, .release-window, .complete-window {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .pixel-window-top, .status-window-top, .memory-window-top,
+  .release-top, .complete-top {
+    flex: 0 0 auto;
+    min-height: 0;
+    padding: 10px 10px;
+    gap: 6px;
+    font-size: clamp(5px, 1.55vw, 7px);
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .pixel-window-content, .status-window-body, .memory-body,
+  .release-body, .complete-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 14px 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chapter-navigation, .complete-navigation {
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding-top: 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .chapter-navigation a {
+    min-width: 0;
+    padding: 11px 5px;
+    font-size: clamp(5px, 1.55vw, 7px);
+  }
+
+  /* MAIN: retain the cats and anchor the button/footer at bottom. */
+  .pixel-window-content { justify-content: center; }
+  .hero-badge { font-size: clamp(6px, 1.8vw, 9px); }
+  .pixel-sparkles { margin-top: 8px; }
+  .pixel-hero-title { margin: 8px 0 12px; font-size: clamp(21px, 5.6vw, 35px); }
+  .pixel-hero-sub { margin: 12px 0 18px; font-size: clamp(12px, 3.2vw, 16px); }
+  .pixel-story-button { width: 100%; padding: 12px 10px; }
+  .pixel-hero-bottom { margin-top: auto; padding-top: 10px; }
+  .hero-cats { flex: 0 0 auto; height: 48px; margin: 8px auto -10px; }
+  .hero-cats img { width: 60px; }
+
+  /* Chapter 01: content starts at top, navigation stays at bottom. */
+  .status-kicker, .memory-kicker, .release-kicker, .complete-kicker {
+    font-size: clamp(11px, 2.8vw, 14px);
+    margin-bottom: 9px;
+  }
+  .status-title { font-size: clamp(22px, 5.5vw, 30px); margin-bottom: 17px; }
+  .status-row { padding: 12px 9px; gap: 7px; font-size: clamp(11px, 2.7vw, 15px); }
+  .status-footer { margin-top: 14px; }
+
+  /* Chapter 02: photo grows into remaining space, never beyond it. */
+  .memory-body h2, .release-body h2 {
+    font-size: clamp(18px, 4.5vw, 26px);
+    margin: 0 0 13px;
+    line-height: 1.5;
+  }
+  .memory-viewer {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    grid-template-columns: 26px minmax(0, 1fr) 26px;
+    gap: 5px;
+    align-items: stretch;
+  }
+  .memory-photo {
+    width: 100%; height: 100%; max-width: none;
+    min-height: 0; aspect-ratio: auto;
+  }
+  .memory-photo img { width: 100%; height: 100%; object-fit: contain; }
+  .memory-controls { flex: 0 0 auto; padding: 9px 0 10px; }
+  .memory-footer { flex: 0 0 auto; padding-top: 10px; }
+  .memory-placeholder { gap: 10px; }
+  .memory-placeholder span { font-size: 30px; }
+  .memory-placeholder strong { font-size: 10px; }
+  .memory-placeholder small { font-size: 11px; }
+
+  /* Chapter 03: compact patch notes, with navigation visible. */
+  .release-version { margin-bottom: 13px; font-size: 7px; }
+  .release-list { flex: 0 1 auto; min-height: 0; }
+  .release-item { gap: 8px; padding: 10px 9px; }
+  .release-tag { min-width: 51px; padding: 7px 4px; font-size: 6px; }
+  .release-item h3 { font-size: clamp(13px, 3.3vw, 17px); margin-bottom: 3px; }
+  .release-item p { font-size: clamp(10px, 2.5vw, 12px); line-height: 1.45; }
+  .release-complete { margin: 12px 0; font-size: 7px; }
+  .release-footer { padding-top: 10px; font-size: 7px; }
+
+  /* Chapter 04: center the ending without stretching the page. */
+  .complete-center { flex: 1 1 auto; min-height: 0; padding: 8px 0; gap: 12px; }
+  .complete-center h2 { font-size: clamp(20px, 5.2vw, 30px); }
+  .complete-heart { font-size: 40px; }
+  .complete-message { font-size: clamp(13px, 3.2vw, 17px); }
+  .complete-caption { font-size: clamp(6px, 1.55vw, 8px); }
+  .complete-bottom { padding-top: 10px; }
+  .pixel-ending-heart { margin-top: 10px; margin-bottom: 7px; }
+}
+
+/* Short mobile screens: prioritize legibility and prevent clipping. */
+@media (max-width: 600px) and (max-height: 690px) {
+  .hero.is-active,
+  body.chapter-mode[data-chapter="decision"] #decision,
+  body.chapter-mode[data-chapter="memory"] #memory,
+  body.chapter-mode[data-chapter="release"] #release,
+  body.chapter-mode[data-chapter="complete"] #complete {
+    overflow: auto;
+    height: auto;
+    min-height: 100svh;
+  }
+  .pixel-window, .status-window, .memory-window, .release-window, .complete-window {
+    height: auto;
+    min-height: calc(100svh - 28px);
+    max-height: none;
+    overflow: visible;
+  }
+  .memory-viewer { flex: none; height: min(46svh, 340px); }
+}
+
+/* MAIN MOBILE FINAL — keep all content grouped, centered vertically */
+@media (max-width: 600px) and (min-height: 691px) {
+  .pixel-window-content {
+    justify-content: center;
+  }
+  .hero-badge { margin-top: 0; }
+  .pixel-story-button { flex-shrink: 0; margin-bottom: 0; }
+  .pixel-hero-bottom {
+    flex-shrink: 0;
+    margin-top: clamp(18px, 3.2svh, 30px);
+    padding-top: 12px;
+  }
+  .hero-cats {
+    flex-shrink: 0;
+    margin-top: 12px;
+  }
+}
+
+/* FINAL MOBILE: compact, equal-height game cards instead of tall columns */
+@media (max-width:600px) and (min-height:691px) {
+  .hero.is-active,
+  body.chapter-mode[data-chapter="decision"] #decision,
+  body.chapter-mode[data-chapter="memory"] #memory,
+  body.chapter-mode[data-chapter="release"] #release,
+  body.chapter-mode[data-chapter="complete"] #complete {
+    height:100svh;
+    min-height:100svh;
+    padding:12px;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+  }
+  .pixel-window,.status-window,.memory-window,.release-window,.complete-window {
+    height:min(650px, calc(100svh - 24px));
+    min-height:0;
+    max-height:calc(100svh - 24px);
+  }
+  .pixel-window-content {
+    flex:1;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:14px 15px 10px;
+  }
+  .pixel-hero-bottom {margin-top:20px;}
+  .hero-cats {margin-top:10px;}
+  .memory-controls {padding:6px 0 8px;}
+  .release-body {padding-top:16px;padding-bottom:12px;}
+  .release-item {padding:8px 9px;}
+  .release-version {margin-bottom:8px;}
+  .release-complete {margin:8px 0;}
+  .chapter-navigation {padding-top:12px;}
+}
+
+/* FIX: returning to MAIN from chapters must retain the same mobile layout. */
+@media (max-width:600px) and (min-height:691px) {
+  body.chapter-mode[data-chapter="hero"] #hero {
+    display:flex !important;
+    height:100svh;
+    min-height:100svh;
+    padding:12px;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(ellipse at 50% 55%,#332536 0%,#1d1921 65%);
+  }
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-window {
+    height:min(650px, calc(100svh - 24px));
+    min-height:0;
+    max-height:calc(100svh - 24px);
+  }
+}
+@media (max-width:600px) and (max-height:690px) {
+  body.chapter-mode[data-chapter="hero"] #hero {
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    min-height:100svh;
+    height:auto;
+    padding:12px;
+  }
+}
