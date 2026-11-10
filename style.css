@@ -901,3 +901,11 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
  .status-window-body .proposal-stage {padding:0;gap:0;}
  .status-window-body .proposal-frame {width:min(68%,230px);max-height:min(19svh,135px);}
 }
+
+/* V11: smaller transparent proposal sprites */
+.proposal-stage { background: transparent !important; }
+.proposal-frame { background: transparent !important; width: min(100%, 200px) !important; max-height: 108px !important; object-fit: contain !important; image-rendering: pixelated; }
+@media(max-width:600px) {
+ .status-window-body .proposal-frame { width: min(55%, 190px) !important; max-height: min(15svh, 105px) !important; }
+ .status-window-body .proposal-stage { min-height: 0 !important; }
+}
