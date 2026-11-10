@@ -825,3 +825,43 @@ body.chapter-mode[data-chapter="complete"] #complete {display:flex!important}
     flex-shrink: 0;
   }
 }
+
+/* MAIN MOBILE SPACING v7 — reduce the empty middle without changing chapters. */
+@media (max-width: 600px) and (min-height: 691px) {
+  .hero.is-active .pixel-window-content,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-window-content {
+    justify-content: flex-start;
+    padding: 20px 15px 12px;
+  }
+  .hero.is-active .hero-badge,
+  body.chapter-mode[data-chapter="hero"] #hero .hero-badge {
+    margin-top: clamp(35px, 7svh, 58px);
+  }
+  .hero.is-active .pixel-sparkles,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-sparkles {
+    margin-top: 18px;
+  }
+  .hero.is-active .pixel-hero-title,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-hero-title {
+    margin: 18px 0 15px;
+  }
+  .hero.is-active .pixel-hero-sub,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-hero-sub {
+    margin: 22px 0 0;
+  }
+  .hero.is-active .pixel-story-button,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-story-button {
+    margin-top: clamp(38px, 6svh, 54px);
+    flex-shrink: 0;
+  }
+  .hero.is-active .pixel-hero-bottom,
+  body.chapter-mode[data-chapter="hero"] #hero .pixel-hero-bottom {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .hero.is-active .hero-cats,
+  body.chapter-mode[data-chapter="hero"] #hero .hero-cats {
+    margin-top: 16px;
+    margin-bottom: 13px;
+  }
+}
