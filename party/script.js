@@ -52,10 +52,10 @@ startButton.addEventListener("click", () => {
 });
 // MEMORY ARCHIVE ADD-ON — paste at the END of script.js
 (() => {
-  const total = 8;
+  const total = 9;
   // To add photos later, put photo-01.jpg ... photo-08.jpg inside assets,
   // then change the corresponding null to "assets/photo-01.jpg" etc.
-  const photos = [null, null, null, null, null, null, null, null];
+  const photos = ["assets/photo-01.jpg", "assets/photo-02.jpg", "assets/photo-03.jpg", "assets/photo-04.jpg", "assets/photo-05.jpg", "assets/photo-06.jpg", "assets/photo-07.jpg", "assets/photo-08.jpg", "assets/photo-09.jpg"];
   const viewer = document.getElementById('memoryViewer');
   const photo = document.getElementById('memoryPhoto');
   const count = document.getElementById('memoryCount');
