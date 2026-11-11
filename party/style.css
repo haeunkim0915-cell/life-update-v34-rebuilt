@@ -2366,3 +2366,45 @@ body.chapter-mode[data-chapter="party"] #party .complete-navigation {
     padding-bottom: 8px !important;
   }
 }
+
+/* v29 — distribute bonus stage elements over the available vertical space.
+   Replaces v26-v28 party-only positioning without affecting other screens. */
+body.chapter-mode[data-chapter="party"] #party .party-body {
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+  min-height:0 !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-kicker {
+  flex:0 0 auto !important;
+  margin-bottom:0 !important;
+}
+body.chapter-mode[data-chapter="party"] #party .party-content {
+  flex:1 0 auto !important;
+  min-height:min-content !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:8px 0 !important;
+  justify-content:space-evenly !important;
+  align-items:center !important;
+  gap:clamp(6px,1.2vh,13px) !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-bottom {
+  flex:0 0 auto !important;
+  margin:0 !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-navigation {
+  flex:0 0 auto !important;
+  margin:0 !important;
+}
+@media (max-width:600px) {
+  body.chapter-mode[data-chapter="party"] #party .party-body {
+    padding:clamp(10px,2vh,20px) 18px !important;
+  }
+  body.chapter-mode[data-chapter="party"] #party .party-content {
+    gap:clamp(5px,1vh,10px) !important;
+    padding:6px 0 !important;
+  }
+}
