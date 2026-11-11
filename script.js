@@ -52,10 +52,10 @@ startButton.addEventListener("click", () => {
 });
 // MEMORY ARCHIVE ADD-ON — paste at the END of script.js
 (() => {
-  const total = 8;
+  const total = 9;
   // To add photos later, put photo-01.jpg ... photo-08.jpg inside assets,
   // then change the corresponding null to "assets/photo-01.jpg" etc.
-  const photos = [null, null, null, null, null, null, null, null];
+  const photos = ["assets/photo-01.jpg", "assets/photo-02.jpg", "assets/photo-03.jpg", "assets/photo-04.jpg", "assets/photo-05.jpg", "assets/photo-06.jpg", "assets/photo-07.jpg", "assets/photo-08.jpg", "assets/photo-09.jpg"];
   const viewer = document.getElementById('memoryViewer');
   const photo = document.getElementById('memoryPhoto');
   const count = document.getElementById('memoryCount');
@@ -108,7 +108,7 @@ startButton.addEventListener("click", () => {
 
 /* CHAPTER NAVIGATION */
 (() => {
-  const chapters = ["hero", "decision", "memory", "release", "complete"];
+  const chapters = ["hero", "decision", "memory", "release", "complete", "party"];
 
   function showChapter(id) {
     if (!chapters.includes(id)) return;
@@ -135,6 +135,21 @@ startButton.addEventListener("click", () => {
     if (!chapters.includes(target)) return;
 
     event.preventDefault();
+    if (target === 'party' && document.body.dataset.chapter === 'complete') {
+      const overlay = document.getElementById('bonusTransition');
+      if (overlay && !overlay.classList.contains('is-showing')) {
+        overlay.classList.add('is-showing');
+        overlay.setAttribute('aria-hidden', 'false');
+        window.setTimeout(() => {
+          showChapter('party');
+          window.setTimeout(() => {
+            overlay.classList.remove('is-showing');
+            overlay.setAttribute('aria-hidden', 'true');
+          }, 350);
+        }, 1400);
+      }
+      return;
+    }
     showChapter(target);
   });
 
