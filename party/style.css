@@ -2408,3 +2408,56 @@ body.chapter-mode[data-chapter="party"] #party .complete-navigation {
     padding:6px 0 !important;
   }
 }
+
+
+/* v30 — single party-only grid layout; overrides v26–v29 flex spacing.
+   The central panel is vertically centered in the remaining space,
+   while the kicker and navigation stay in their own rows. */
+body.chapter-mode[data-chapter="party"] #party .party-body {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) auto auto !important;
+  align-content: stretch !important;
+  justify-content: stretch !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-kicker {
+  grid-row: 1 !important;
+  margin: 0 !important;
+}
+body.chapter-mode[data-chapter="party"] #party .party-content {
+  grid-row: 2 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  flex: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 8px 0 !important;
+  justify-content: center !important;
+  gap: clamp(6px, 1vh, 12px) !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-bottom {
+  grid-row: 3 !important;
+  margin: 0 !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-navigation {
+  grid-row: 4 !important;
+  margin: 0 !important;
+}
+@media (max-width:600px) {
+  body.chapter-mode[data-chapter="party"] #party .party-content {
+    gap: clamp(5px, .75vh, 9px) !important;
+    padding: 6px 0 !important;
+  }
+}
+/* If the phone is too short, allow the content panel to scroll rather than clip buttons. */
+@media (max-width:600px) and (max-height:740px) {
+  body.chapter-mode[data-chapter="party"] #party .party-body {
+    grid-template-rows: auto auto auto auto !important;
+    align-content: start !important;
+  }
+}
