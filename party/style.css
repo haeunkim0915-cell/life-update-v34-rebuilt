@@ -2337,3 +2337,32 @@ body.chapter-mode[data-chapter="party"] #party .party-body {
   body.chapter-mode[data-chapter="party"] #party .complete-bottom {padding-top:5px;}
   body.chapter-mode[data-chapter="party"] #party .complete-navigation {padding-top:7px;}
 }
+
+/* v28 — balance party content vertically instead of leaving a large gap above footer.
+   Party-only, preserves other chapters and existing animations. */
+body.chapter-mode[data-chapter="party"] #party .party-body {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+body.chapter-mode[data-chapter="party"] #party .party-content {
+  flex: 0 0 auto !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-bottom {
+  margin-top: 0 !important;
+}
+body.chapter-mode[data-chapter="party"] #party .complete-navigation {
+  margin-top: 0 !important;
+}
+@media (max-width:600px) {
+  body.chapter-mode[data-chapter="party"] #party .party-body {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  body.chapter-mode[data-chapter="party"] #party .party-content {
+    padding-top: 4px !important;
+    padding-bottom: 8px !important;
+  }
+}
