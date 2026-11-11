@@ -2244,3 +2244,12 @@ body.chapter-mode[data-chapter="complete"] #party {display:none!important}
  #party .party-rsvp {padding:10px 14px}
 }
 @media(prefers-reduced-motion:reduce){.bonus-unlock-button,.bonus-transition-heart{animation:none}}
+
+/* v25 — RSVP link and deadline; party page only */
+#party .party-deadline{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;border:1px solid #a6577e;background:#302536;padding:10px 12px;width:100%;box-sizing:border-box}
+#party .party-deadline strong{color:#f38eb5;font:clamp(9px,1.1vw,12px)/1.5 var(--pixel,monospace)}
+#party .party-deadline span{color:#eadbe5;font-size:clamp(11px,1.35vw,13px);line-height:1.65;word-break:keep-all}
+#party .party-deadline b{color:#fff}
+#party a.party-rsvp{display:block;width:100%;box-sizing:border-box;text-align:center;text-decoration:none;cursor:pointer;opacity:1;font-weight:600}
+#party a.party-rsvp:hover,#party a.party-rsvp:focus-visible{background:#ffd0e1;outline:2px solid #fff;outline-offset:2px}
+@media(max-width:600px){#party .party-deadline{padding:8px 10px;gap:4px}#party .party-deadline strong{font-size:9px}#party .party-deadline span{font-size:11px;line-height:1.5}#party .party-content{gap:clamp(5px,1vh,10px)}#party .party-pixel-heart{margin-block:0}}
