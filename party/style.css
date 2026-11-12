@@ -2501,3 +2501,20 @@ body.chapter-mode[data-chapter="party"] #party .complete-navigation {
     object-position: center;
   }
 }
+
+/* MEMORY ARCHIVE - 원본 사진 비율 유지 */
+body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+  aspect-ratio: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: hidden;
+}
+
+body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  max-height: 55svh;
+  object-fit: contain !important;
+  object-position: center;
+}
