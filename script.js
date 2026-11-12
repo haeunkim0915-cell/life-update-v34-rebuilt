@@ -72,47 +72,56 @@ startButton.addEventListener("click", () => {
   const dots = document.getElementById('memoryDots');
   let index = 0;
   const pad = n => String(n).padStart(2, '0');
-  // Preload each image once, then reuse it instead of fetching on every swipe.
+  // Decode images ahead of time; never clear the current photo while loading.
   const imageCache = photos.map((src, i) => {
     if (!src) return null;
     const img = new Image();
     img.alt = `우리의 사진 ${i + 1}`;
-    img.decoding = 'async';
+    img.decoding = 'sync';
     img.src = src;
     return img;
+  });
+  const ready = imageCache.map(img => {
+    if (!img) return Promise.resolve(false);
+    return new Promise(resolve => {
+      const finish = async () => {
+        if (!img.naturalWidth) { resolve(false); return; }
+        try { if (img.decode) await img.decode(); } catch (_) { /* loaded image can still display */ }
+        resolve(true);
+      };
+      if (img.complete) finish();
+      else {
+        img.addEventListener('load', finish, {once:true});
+        img.addEventListener('error', () => resolve(false), {once:true});
+      }
+    });
   });
   let renderToken = 0;
   function render() {
     const selected = index;
     const token = ++renderToken;
-    const img = imageCache[selected];
-    const showPlaceholder = () => {
-      if (token !== renderToken) return;
-      const p = document.createElement('div');
-      p.className = 'memory-placeholder';
-      const icon = document.createElement('span'); icon.textContent = '✳';
-      const title = document.createElement('strong'); title.textContent = `PHOTO ${pad(selected + 1)}`;
-      const sub = document.createElement('small'); sub.textContent = '사진을 넣을 예정이에요';
-      p.append(icon, title, sub);
-      photo.replaceChildren(p);
-    };
-    const showImage = () => {
-      if (token !== renderToken) return;
-      // Match the frame to the actual photo ratio: no empty side bars or cropping.
-      photo.style.setProperty('--photo-ratio', `${img.naturalWidth} / ${img.naturalHeight}`);
-      photo.replaceChildren(img);
-    };
-    if (!img) showPlaceholder();
-    else if (img.complete && img.naturalWidth > 0) showImage();
-    else if (img.complete) showPlaceholder();
-    else {
-      img.addEventListener('load', showImage, { once: true });
-      img.addEventListener('error', showPlaceholder, { once: true });
-    }
+    // Update controls immediately; keep the previous photo visible until ready.
     count.textContent = `${pad(selected + 1)} / ${pad(total)}`;
     [...dots.children].forEach((d, i) => {
       d.classList.toggle('is-current', i === selected);
       d.setAttribute('aria-current', i === selected ? 'true' : 'false');
+    });
+    ready[selected].then(ok => {
+      if (token !== renderToken) return;
+      const img = imageCache[selected];
+      if (ok && img && img.naturalWidth) {
+        // Prepare the next image before the single DOM swap.
+        photo.style.setProperty('--photo-ratio', `${img.naturalWidth} / ${img.naturalHeight}`);
+        photo.replaceChildren(img);
+      } else {
+        const p = document.createElement('div');
+        p.className = 'memory-placeholder';
+        const icon = document.createElement('span'); icon.textContent = '✳';
+        const title = document.createElement('strong'); title.textContent = `PHOTO ${pad(selected + 1)}`;
+        const sub = document.createElement('small'); sub.textContent = '사진을 넣을 예정이에요';
+        p.append(icon, title, sub);
+        photo.replaceChildren(p);
+      }
     });
   }
   for (let i = 0; i < total; i++) {
