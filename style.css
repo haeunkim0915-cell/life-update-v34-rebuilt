@@ -1216,3 +1216,45 @@ body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
     align-self: stretch;
   }
 }
+
+/* MEMORY ARCHIVE — ratio-aware image frame; appended last to override old rules */
+body.chapter-mode[data-chapter="memory"] #memory .memory-viewer {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  gap: 6px;
+}
+body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+  flex: 0 1 auto;
+  width: auto !important;
+  height: auto !important;
+  max-width: calc(100% - 72px) !important;
+  max-height: 100% !important;
+  aspect-ratio: var(--photo-ratio, 3 / 4) !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+body.chapter-mode[data-chapter="memory"] #memory .memory-arrow {
+  flex: 0 0 30px;
+  align-self: stretch;
+}
+@media (max-width:600px) {
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+    max-width: calc(100% - 72px) !important;
+    max-height: 100% !important;
+  }
+}

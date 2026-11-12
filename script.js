@@ -72,27 +72,47 @@ startButton.addEventListener("click", () => {
   const dots = document.getElementById('memoryDots');
   let index = 0;
   const pad = n => String(n).padStart(2, '0');
+  // Preload each image once, then reuse it instead of fetching on every swipe.
+  const imageCache = photos.map((src, i) => {
+    if (!src) return null;
+    const img = new Image();
+    img.alt = `우리의 사진 ${i + 1}`;
+    img.decoding = 'async';
+    img.src = src;
+    return img;
+  });
+  let renderToken = 0;
   function render() {
-    photo.replaceChildren();
-    if (photos[index]) {
-      const img = document.createElement('img');
-      img.src = photos[index];
-      img.alt = `우리의 사진 ${index + 1}`;
-      img.onerror = () => { photos[index] = null; render(); };
-      photo.append(img);
-    } else {
+    const selected = index;
+    const token = ++renderToken;
+    const img = imageCache[selected];
+    const showPlaceholder = () => {
+      if (token !== renderToken) return;
       const p = document.createElement('div');
       p.className = 'memory-placeholder';
       const icon = document.createElement('span'); icon.textContent = '✳';
-      const title = document.createElement('strong'); title.textContent = `PHOTO ${pad(index + 1)}`;
+      const title = document.createElement('strong'); title.textContent = `PHOTO ${pad(selected + 1)}`;
       const sub = document.createElement('small'); sub.textContent = '사진을 넣을 예정이에요';
       p.append(icon, title, sub);
-      photo.append(p);
+      photo.replaceChildren(p);
+    };
+    const showImage = () => {
+      if (token !== renderToken) return;
+      // Match the frame to the actual photo ratio: no empty side bars or cropping.
+      photo.style.setProperty('--photo-ratio', `${img.naturalWidth} / ${img.naturalHeight}`);
+      photo.replaceChildren(img);
+    };
+    if (!img) showPlaceholder();
+    else if (img.complete && img.naturalWidth > 0) showImage();
+    else if (img.complete) showPlaceholder();
+    else {
+      img.addEventListener('load', showImage, { once: true });
+      img.addEventListener('error', showPlaceholder, { once: true });
     }
-    count.textContent = `${pad(index + 1)} / ${pad(total)}`;
+    count.textContent = `${pad(selected + 1)} / ${pad(total)}`;
     [...dots.children].forEach((d, i) => {
-      d.classList.toggle('is-current', i === index);
-      d.setAttribute('aria-current', i === index ? 'true' : 'false');
+      d.classList.toggle('is-current', i === selected);
+      d.setAttribute('aria-current', i === selected ? 'true' : 'false');
     });
   }
   for (let i = 0; i < total; i++) {
