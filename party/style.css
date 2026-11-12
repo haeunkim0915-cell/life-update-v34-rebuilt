@@ -2461,3 +2461,43 @@ body.chapter-mode[data-chapter="party"] #party .complete-navigation {
     align-content: start !important;
   }
 }
+
+/* Mobile party screen: center the entire content group within the fixed pixel window. */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="party"] #party .party-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow-y: auto !important;
+    min-height: 0 !important;
+  }
+  body.chapter-mode[data-chapter="party"] #party .complete-kicker,
+  body.chapter-mode[data-chapter="party"] #party .party-content,
+  body.chapter-mode[data-chapter="party"] #party .complete-bottom,
+  body.chapter-mode[data-chapter="party"] #party .complete-navigation {
+    flex: 0 0 auto !important;
+    grid-row: auto !important;
+  }
+  body.chapter-mode[data-chapter="party"] #party .party-content {
+    align-self: stretch !important;
+    justify-content: center !important;
+    padding: 12px 0 !important;
+  }
+  body.chapter-mode[data-chapter="party"] #party .complete-navigation {
+    margin-top: 12px !important;
+  }
+}
+
+/* MEMORY ARCHIVE - 모바일 사진 전체 표시 */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+    overflow: hidden;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+  }
+}

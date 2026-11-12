@@ -1112,3 +1112,32 @@ body.chapter-mode[data-chapter="decision"] #decision { display:flex !important; 
     justify-self: center;
   }
 }
+
+/* Mobile final-screen vertical balance — added without changing other chapters */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="complete"] #complete .complete-body {
+    justify-content: center;
+  }
+  body.chapter-mode[data-chapter="complete"] #complete .complete-center {
+    flex: 0 0 auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  body.chapter-mode[data-chapter="complete"] #complete .complete-navigation {
+    margin-top: 18px;
+  }
+}
+
+/* MEMORY ARCHIVE - 모바일 사진 전체 표시 */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+    overflow: hidden;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+  }
+}
