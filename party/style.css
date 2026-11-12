@@ -2518,3 +2518,30 @@ body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
   object-fit: contain !important;
   object-position: center;
 }
+
+/* 모바일 사진 원본 비율 유지 */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="memory"] #memory .memory-viewer {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    align-items: center;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+    height: auto !important;
+    aspect-ratio: auto !important;
+    max-width: 100%;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    max-height: 48svh;
+    object-fit: contain !important;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-arrow {
+    align-self: stretch;
+  }
+}
