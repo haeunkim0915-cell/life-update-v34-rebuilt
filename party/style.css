@@ -2545,3 +2545,34 @@ body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
     align-self: stretch;
   }
 }
+
+/* MEMORY ARCHIVE - 사진 크기에 액자 맞추기 */
+@media (max-width: 600px) {
+  body.chapter-mode[data-chapter="memory"] #memory .memory-viewer {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    align-items: center !important;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    max-height: none !important;
+    overflow: hidden;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-photo img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 48svh !important;
+    object-fit: contain !important;
+  }
+
+  body.chapter-mode[data-chapter="memory"] #memory .memory-arrow {
+    height: 100%;
+    align-self: stretch;
+  }
+}
